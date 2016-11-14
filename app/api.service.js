@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var md5_1 = require('ts-md5/dist/md5');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
+var Rx_1 = require('rxjs/Rx');
 require('rxjs/add/operator/map');
 var ApiService = (function () {
     function ApiService(http) {
@@ -36,11 +37,22 @@ var ApiService = (function () {
         }
         return this.http
             .get(url)
-            .map(function (response) { return response.json().data.results; });
+            .map(function (response) { return response.json().data; })
+            .catch(this.handleError);
     };
     ApiService.prototype.handleError = function (error) {
-        console.error('An error occurred', error); // for demo purposes only
-        return Promise.reject(error.message || error);
+        // In a real world app, we might use a remote logging infrastructure
+        var errMsg;
+        if (error instanceof http_1.Response) {
+            var body = error.json() || '';
+            var err = body.error || JSON.stringify(body);
+            errMsg = error.status + " - " + (error.statusText || '') + " " + err;
+        }
+        else {
+            errMsg = error.message ? error.message : error.toString();
+        }
+        console.error(errMsg);
+        return Rx_1.Observable.throw(errMsg);
     };
     ApiService = __decorate([
         core_1.Injectable(), 

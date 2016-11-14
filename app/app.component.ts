@@ -13,7 +13,8 @@
       providers: [ApiService]
     })
     export class AppComponent {
-    private characters; 
+    private characters;
+    private results; 
     constructor(private apiService: ApiService) { }
       
       ngOnInit() {
@@ -23,8 +24,7 @@
    
 
     getCharacters() {
-      console.log(this.apiService.call('public/characters',{'offset' : 100, 'limit' : 22}));
-      return this.apiService.call('public/characters',{'offset' : 100, 'limit' : 22}).subscribe(data => this.characters = data);
+      return this.apiService.call('public/characters',{'offset' : 100, 'limit' : 22}).subscribe(data => this.characters = data.results);
 
     }
 

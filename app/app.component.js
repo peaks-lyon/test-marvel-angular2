@@ -20,8 +20,7 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.getCharacters = function () {
         var _this = this;
-        console.log(this.apiService.call('public/characters', { 'offset': 100, 'limit': 22 }));
-        return this.apiService.call('public/characters', { 'offset': 100, 'limit': 22 }).subscribe(function (data) { return _this.characters = data; });
+        return this.apiService.call('public/characters', { 'offset': 100, 'limit': 22 }).subscribe(function (data) { return _this.characters = data.results; });
     };
     AppComponent = __decorate([
         core_1.Component({
