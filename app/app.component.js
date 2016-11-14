@@ -9,26 +9,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var api_service_1 = require('./api.service');
 var AppComponent = (function () {
-    function AppComponent(apiService) {
-        this.apiService = apiService;
+    function AppComponent() {
     }
-    AppComponent.prototype.ngOnInit = function () {
-        this.results = this.getCharacters();
-        console.log(this.characters);
-    };
-    AppComponent.prototype.getCharacters = function () {
-        var _this = this;
-        return this.apiService.call('public/characters', { 'offset': 100, 'limit': 22 }).subscribe(function (data) { return _this.characters = data.results; });
-    };
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: '<h1>Marvel\'s characters :</h1><table><thead><tr><th>Name</th><th>Image</th></thead><tbody><tr *ngFor="let character of characters"><td>{{ character.name }}</td><td><img style="width:75px" src="{{ character.thumbnail.path }}.{{ character.thumbnail.extension }}" /></td></tr></tbody></table>',
-            providers: [api_service_1.ApiService]
+            template: '<h1>Marvel test :</h1><router-outlet></router-outlet>'
         }), 
-        __metadata('design:paramtypes', [api_service_1.ApiService])
+        __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
 }());
