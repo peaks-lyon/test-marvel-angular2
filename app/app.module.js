@@ -14,6 +14,7 @@ var app_component_1 = require('./app.component');
 var http_1 = require('@angular/http');
 var router_1 = require('@angular/router');
 var character_component_1 = require('./character.component');
+var ng2_pagination_1 = require('ng2-pagination');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -22,7 +23,9 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 http_1.HttpModule,
+                ng2_pagination_1.Ng2PaginationModule,
                 router_1.RouterModule.forRoot([
+                    { path: '', component: character_component_1.CharacterComponent },
                     { path: ':page', component: character_component_1.CharacterComponent }
                 ])
             ],
