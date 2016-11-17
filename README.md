@@ -7,4 +7,5 @@ Installation
 ---------------------
 - Cloner ce repository "git clone https://github.com/Yosimitso/test-marvel-angular2"
 - "node_modules" est deja présent dans le repo, en cas de problème au démarrage de l'application lancer la commande "npm install" dans le dossier de l'application
+- Renseigner la clé privée et public de votre compte developer.marvel dans app/config.ts
 - Lancer l'application avec "npm start"
