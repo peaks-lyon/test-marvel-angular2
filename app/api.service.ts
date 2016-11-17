@@ -4,16 +4,17 @@ import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import {Observable} from 'rxjs/Rx';
  import 'rxjs/add/operator/map';
+import { Config } from './config'; 
 
 @Injectable()
 export class ApiService {
 	private url;
 	private privateKey;
 	private publicKey;
-	constructor(private http: Http) { //, private url : string,private privateKey : number, private publicKey : number
-		this.url = 'http://gateway.marvel.com/v1';
-		this.privateKey= 'ade5d4dcd90d9e04ca3e0e1a7d6965ab57c1ac85';
-		this.publicKey = '511d522c1d1ef717b5624e10083de5dc';
+	constructor(private http: Http, private config: Config) { //, private url : string,private privateKey : number, private publicKey : number
+		this.url = config.url;
+		this.privateKey= config.privateKey;
+		this.publicKey = config.publicKey;
 	}
 public call(route,parameters) {
 	var url = this.url+'/'+route;

@@ -14,12 +14,14 @@ var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
 var Rx_1 = require('rxjs/Rx');
 require('rxjs/add/operator/map');
+var config_1 = require('./config');
 var ApiService = (function () {
-    function ApiService(http) {
+    function ApiService(http, config) {
         this.http = http;
-        this.url = 'http://gateway.marvel.com/v1';
-        this.privateKey = 'ade5d4dcd90d9e04ca3e0e1a7d6965ab57c1ac85';
-        this.publicKey = '511d522c1d1ef717b5624e10083de5dc';
+        this.config = config;
+        this.url = config.url;
+        this.privateKey = config.privateKey;
+        this.publicKey = config.publicKey;
     }
     ApiService.prototype.call = function (route, parameters) {
         var url = this.url + '/' + route;
@@ -56,7 +58,7 @@ var ApiService = (function () {
     };
     ApiService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, config_1.Config])
     ], ApiService);
     return ApiService;
 }());

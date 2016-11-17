@@ -10,13 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var api_service_1 = require('./api.service');
+var config_1 = require('./config');
 var AppComponent = (function () {
     function AppComponent(apiService) {
         this.apiService = apiService;
     }
     AppComponent.prototype.ngOnInit = function () {
         this.results = this.getCharacters();
-        console.log(this.characters);
     };
     AppComponent.prototype.getCharacters = function () {
         var _this = this;
@@ -25,8 +25,8 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: '<h1>Marvel\'s characters :</h1><table><thead><tr><th>Name</th><th>Image</th></thead><tbody><tr *ngFor="let character of characters"><td>{{ character.name }}</td><td><img style="width:75px" src="{{ character.thumbnail.path }}.{{ character.thumbnail.extension }}" /></td></tr></tbody></table>',
-            providers: [api_service_1.ApiService]
+            templateUrl: './charactersList.html',
+            providers: [api_service_1.ApiService, config_1.Config]
         }), 
         __metadata('design:paramtypes', [api_service_1.ApiService])
     ], AppComponent);
